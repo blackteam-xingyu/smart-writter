@@ -43,6 +43,9 @@ export class BookTreeNode {
       console.error(error);
     }
   }
+  public delete() {
+    
+  }
 }
 export class ChapterTreeNode {
   constructor(public name: string, public readonly book: BookTreeNode) {}
@@ -77,6 +80,11 @@ export class ChapterTreeNode {
       this.name = newname;
     });
   }
+
+  public delete() {
+    fs.unlinkSync(`${this.book.path}/${this.name}`);
+  }
+
   public get previewCommand(): Command {
     return {
       title: this.name,

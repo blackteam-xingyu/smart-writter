@@ -44,3 +44,7 @@ export const showNotification = (tip?: string, timer?: number) => {
 export const showWarningMessage = (tip: string) => {
   window.showWarningMessage(tip);
 };
+
+export const showErrorMessage = (tip: string) => {
+  window.showErrorMessage(tip);
+};

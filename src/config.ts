@@ -1,6 +1,7 @@
 export enum Commands {
   localRefresh = 'smart-writter.command.refresh',
   openBook = 'smart-writter.command.openBook',
+  deleteBook = 'smart-writter.command.deleteBook',
   importBook = 'smart-writter.command.import',
   openDetail = 'smart-writter.command.openDetail',
   chapterRefresh = 'smart-writter.command.chapterRefresh',

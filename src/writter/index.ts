@@ -44,6 +44,14 @@ class WritterDriver {
       return [];
     }
   }
+
+  public deleteBook(path: string) {
+    const bookListStr: string = fs.readFileSync(this.absPath, 'utf-8');
+    const bookListPath: string[] = JSON.parse(bookListStr);
+    const newList = bookListPath.filter((item) => item !== path);
+    const newListStr = JSON.stringify(newList);
+    fs.writeFileSync(this.absPath, newListStr, 'utf-8');
+  }
 }
 
 export const writterDriver: WritterDriver = new WritterDriver();

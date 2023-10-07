@@ -1,6 +1,6 @@
 import { window, ViewColumn, ExtensionContext, commands, ThemeColor, workspace } from 'vscode';
 import { bookDataProvider, chapterDataProvider } from '../explorer/treeDataProvider';
-import { Notification, showWarningMessage } from '../utils/notification';
+import { Notification, showWarningMessage, showErrorMessage } from '../utils/notification';
 import { BookTreeNode, ChapterTreeNode } from '../explorer/TreeNode';
 import { bookNodeManager, chapterNodeManager } from '../explorer/explorerNodeManager';
 import { writterDriver } from '../writter';
@@ -9,7 +9,6 @@ import WebViewTool, { WebviewMessage, getWebViewContent } from '../utils/webview
 import { IBookDetail } from '../@types';
 import utils from '../utils';
 import ChatGlm from '../utils/chatglm';
-import * as fs from 'fs';
 
 export const localRefresh = async () => {
   const notification = new Notification('刷新小说目录');
@@ -48,6 +47,11 @@ export const importBook = async () => {
 export const openBook = async (bookNode: BookTreeNode) => {
   commands.executeCommand(Commands.openDetail, bookNode);
   commands.executeCommand(Commands.chapterRefresh, bookNode);
+};
+
+export const deleteBook = (bookNode: BookTreeNode) => {
+  writterDriver.deleteBook(bookNode.path);
+  commands.executeCommand(Commands.localRefresh);
 };
 
 export const openDetail = (context: ExtensionContext) => {
@@ -193,5 +197,15 @@ export const createChapter = async () => {
         chapterDataProvider.fire();
       }
     }
+  }
+};
+
+export const deleteChapter = async (chapterNode: ChapterTreeNode) => {
+  try {
+    chapterNode.delete();
+    commands.executeCommand(Commands.chapterRefresh);
+  } catch (error) {
+    console.error(error);
+    showErrorMessage('删除失败');
   }
 };

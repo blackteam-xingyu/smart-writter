@@ -2,7 +2,7 @@
   "name": "smart-writter",
   "displayName": "smart-writter",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -25,9 +25,14 @@
           "group": "custom-item@2"
         },
         {
+          "command": "smart-writter.command.deleteBook",
+          "when": "view == smart-writter-book",
+          "group": "custom-item@3"
+        },
+        {
           "command": "smart-writter.command.deleteChapter",
           "when": "view == smart-writter-chapter",
-          "group": "custom-item@3"
+          "group": "custom-item@4"
         }
       ],
       "view/title": [
@@ -97,6 +102,10 @@
       },
       {
         "command": "smart-writter.command.deleteChapter",
+        "title": "删除"
+      },
+      {
+        "command": "smart-writter.command.deleteBook",
         "title": "删除"
       }
     ],

@@ -50,4 +50,4 @@ smart-writter 提供了智能的工具栏其中包括小说排版的基本功能
 
 别犹豫了，快去安装 smart-writter 吧！让它成为你的新的摸鱼神器！
 
-[插件安装链接](插件安装链接)
+[插件安装链接](https://github.com/blackteam-xingyu/smart-writter)
