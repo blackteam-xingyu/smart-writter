@@ -2,6 +2,7 @@
   "name": "smart-writter",
   "displayName": "smart-writter",
   "description": "",
+  "publisher":"tangxy",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.81.0"
