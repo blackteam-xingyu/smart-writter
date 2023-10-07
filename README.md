@@ -1,6 +1,6 @@
 # vscode 终于可以用来写小说啦！快来看看这个摸鱼神器插件 smart-writter 吧
 
-vscode 甚至能用来写代码，而今天他能写小说了！是不是觉得有些小伙伴们的摸鱼方式是看小说，为何不试试自己创作呢？别再局限于代码，让 Smart Writer 助你开创小说写作新纪元！
+常言道：vscode 甚至能用来写代码。而今天他能写小说了！是不是觉得有些小伙伴们的摸鱼方式是看小说，为何不试试自己创作呢？别再局限于代码，让 Smart Writer 助你开创小说写作新纪元！
 
 ![Smart Writer](https://raw.githubusercontent.com/blackteam-xingyu/smart-writter/master/doc/image/editer.png)
 
