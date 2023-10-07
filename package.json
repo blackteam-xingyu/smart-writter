@@ -3,10 +3,11 @@
   "displayName": "smart-writter",
   "description": "",
   "publisher":"tangxy",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.81.0"
   },
+  "icon": "static/images/icon.png",
   "categories": [
     "Other",
     "Extension Packs"
