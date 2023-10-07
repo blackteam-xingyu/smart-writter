@@ -37,7 +37,7 @@ export const importBook = async () => {
       canSelectMany: false,
     });
     if (pathDir) {
-      const newNode = new BookTreeNode(decodeURIComponent(pathDir[0].toString().replace('file://', '')), msg);
+      const newNode = new BookTreeNode(pathDir[0].path, msg);
       writterDriver.saveTreeNode(bookNodeManager.appendTreeNode(newNode));
       bookDataProvider.fire();
     }
