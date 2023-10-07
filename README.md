@@ -1,39 +1,53 @@
-# vscode终于可以用来写小说啦！快来看看这个摸鱼神器插件smart-writter吧
+# vscode 终于可以用来写小说啦！快来看看这个摸鱼神器插件 smart-writter 吧
 
-vscode甚至能用来写代码，而今天他能写小说了！是不是觉得有些小伙伴们的摸鱼方式是看小说，为何不试试自己创作呢？别再局限于代码，让Smart Writer助你开创小说写作新纪元！
+vscode 甚至能用来写代码，而今天他能写小说了！是不是觉得有些小伙伴们的摸鱼方式是看小说，为何不试试自己创作呢？别再局限于代码，让 Smart Writer 助你开创小说写作新纪元！
 
 ![Smart Writer](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/editer.png)
 
-
-
 ## 导入工作区
-不用再担心新建文件夹和繁琐的配置，你可以将你的工作区导入Smart Writer，让你的小说创作更加高效！是不是有一整个小说的文件夹，等着你进行创作和编辑？
 
-![导入工作区](导入工作区图片链接)
+点击导入输入您的小说名字并选取所在文件夹路径，您也可以在您的资源管理器中新建一个空文件夹并选定
 
-## 懒人福音：新建章节
-懒癌患者表示，新建章节太麻烦？！放心，Smart Writer的直观界面让你一秒钟就能新建章节，小说结构一目了然，你只需要专注写作！
+![导入工作区](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/import.png)
+![导入工作区2](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/import-2.png)
 
-![新建章节](新建章节图片链接)
+## 新建章节
 
-## 写小说如虎添翼：智能工具栏
-这个智能工具栏可不是吹的，它包含了一系列功能，助你轻松搞定写小说的琐事：
+点击新建章节，输入您的章节序号和名称，插件将在您的小说文件夹内新建一个 txt 文件并在 vscode 中打开编辑
+
+![新建章节](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/new.png)
+![新建章节2](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/new-2.png)
+![新建章节3](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/new-3.png)
+
+## 智能工具栏
+
+smart-writter 提供了智能的工具栏其中包括小说排版的基本功能以及结合国产大语言模型 ChatGLM(主打一个性价比,后续会兼容其他模型)开发的智能工具。其中智能工具例如智能取名等功能需要在扩展设置中配置 Chatglm 相关配置。其中包括，Key、Api 地址以及 ChatGLM 版本。其中 Key 可以访问[ChatGLM 官网](https://open.bigmodel.cn/overview 'ChatGLM官网')获得
+
+![配置](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/setting.png)
 
 ### 格式化
-不用再手动弄格式了，一键格式化，小说排版秒变专业！
+
+点击格式化按钮可以自动将小说每个段首空两个中文字符的缩进。当然，在创作过程中，如果您是在一个段落的末尾敲击 enter 键换行则会在新起段落的首行自动缩进，如果是在段落中间换行则不会自动缩进。相对应的格式化按钮还有“段落空行”和“取消段落空行”，前者会让您的每个段落之间空出一行，后者会取消前者的操作。
+
+![格式化](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/formate.png)
 
 ### 字数统计
-随时掌握你小说的字数，不怕写多了还是写少了，节奏自己把控！
 
-### 智能取名功能
-懒得想名字？别担心，Smart Writer来帮你，角色名、地点名，通通搞定！
+点击统计面板按钮将展开您的字数统计,实时监控您的打字速度。
 
-![智能工具栏](智能工具栏图片链接)
+![字数统计](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/detail.png)
 
-Smart Writer是你写小说的得力助手，不仅实用，还能让你享受创作的乐趣。不要再用无趣的小说编辑器，让VSCode和Smart Writer一起串起你的创作梦想！
+### 智能取名
 
-别犹豫了，快去安装Smart Writer吧！让它成为你的创作神器，小说创作从此变得轻松、有趣！
+结合大语言模型的起名功能，十分智能，可以对用细致描述的方式起一个特定风格的名字
+![智能取名](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/named.png)
+
+### 智能纠错(开发测试中)
+
+### 智能世界观(开发测试中)
+
+### 智能续写(开发测试中)
+
+别犹豫了，快去安装 smart-writter 吧！让它成为你的新的摸鱼神器！
 
 [插件安装链接](插件安装链接)
-
-写小说不再是一件枯燥的事，Smart Writer陪你一起玩创作，快来开启小说写作的全新篇章吧！不管是初学者还是老鸟，都能在Smart Writer的陪伴下写出精彩的小说，赶紧安装吧！
