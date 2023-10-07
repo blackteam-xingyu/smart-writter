@@ -2,7 +2,7 @@
 
 vscode甚至能用来写代码，而今天他能写小说了！是不是觉得有些小伙伴们的摸鱼方式是看小说，为何不试试自己创作呢？别再局限于代码，让Smart Writer助你开创小说写作新纪元！
 
-![Smart Writer](./doc/image/editer.png)
+![Smart Writer](https://github.com/blackteam-xingyu/smart-writter/blob/master/doc/image/editer.png)
 
 
 
