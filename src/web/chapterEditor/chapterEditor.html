@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>编辑器</title>
+    <link rel="stylesheet" href="../../../lib/element-ui/index.css" />
+    <link rel="stylesheet" href="../icon//iconfont.css" />
+    <script src="../../../lib/tinymce/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script></script>
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="./chapterEditor.css" />
+  </head>
+  <body>
+    <div id="editor" :style="varCss">
+      <div class="title">
+        第
+        <input type="text" class="title-input" v-model="title.num" @input="SaveTitle" />
+        章
+        <input type="text" style="width: 300px" class="title-input" v-model="title.name" @input="SaveTitle" />
+      </div>
+      <pre id="edit" :class="preCss"></pre>
+      <div class="toolbar">
+        <transition name="el-fade-in">
+          <div class="toolbar-border" style="margin-right: 20px" v-show="isTools">
+            <div class="toolbar-select">
+              <el-select v-model="fontSize" size="mini">
+                <el-option v-for="item in fontSizeList" :label="item" :value="item" :key="item"></el-option>
+              </el-select>
+            </div>
+            <div class="toolbar-btn" @click="toolbar.blod=!toolbar.blod" :class="toolbar.blod?'toolbar-btn__active':''">
+              <i class="icon-blod" title="加粗"></i>
+            </div>
+            <div
+              class="toolbar-btn"
+              @click="toolbar.italic = !toolbar.italic"
+              :class="toolbar.italic?'toolbar-btn__active':''"
+            >
+              <i class="icon-italic" title="倾斜"></i>
+            </div>
+            <div
+              class="toolbar-btn"
+              @click="toolbar.underline = !toolbar.underline"
+              :class="toolbar.underline?'toolbar-btn__active':''"
+            >
+              <i class="icon-underline" title="下划线"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-align-left" title="格式化" @click="Format"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-a-goback" title="撤回" @click="Undo"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-a-goforward" title="恢复" @click="Redo"></i>
+            </div>
+            <div class="toolbar-line"></div>
+            <div class="toolbar-btn">
+              <i class="icon-a-bulletpoint" title="段落空行" @click="InsertBlankLineBetweenParagraphs"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-align-justify" title="取消段落空行" @click="CancelBlankLineBetweenParagraphs"></i>
+            </div>
+            <div class="toolbar-line"></div>
+            <div class="toolbar-btn">
+              <i class="icon-tongji" title="统计面板" @click="isTotal=!isTotal"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-quming" title="智能取名(需要gpt-api)" @click="isNamed=!isNamed"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-jiucuo" title="智能纠错(需要gpt-api)(暂不支持)"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-map" title="智能世界观(需要gpt-api)(暂不支持)"></i>
+            </div>
+            <div class="toolbar-btn">
+              <i class="icon-pen" title="智能续写(需要gpt-api)(暂不支持)"></i>
+            </div>
+          </div>
+        </transition>
+        <div class="toolbar-border">
+          <div class="toolbar-btn" @click="isTools=!isTools">
+            <i class="icon-peizhi" title="工具栏"></i>
+          </div>
+        </div>
+      </div>
+      <transition name="el-fade-in">
+        <div v-show="isTotal" class="total">总字数：{{total}} 速度：{{speed}}/分钟</div>
+      </transition>
+      <transition name="el-fade-in">
+        <div v-show="isNamed" class="named">
+          <div class="named-title">
+            智能取名
+            <i class="el-icon-close" @click="isNamed=false"></i>
+          </div>
+          <div class="named-content">
+            <el-form :model="nameForm" size="mini">
+              <el-form-item label="姓氏" prop="fimalyName">
+                <el-input v-model="nameForm.fimalyName" placeholder="请输入角色姓氏"></el-input>
+              </el-form-item>
+              <el-form-item label="类型" prop="type">
+                <el-select v-model="nameForm.type">
+                  <el-option v-for="item in nameFormOption.type" :label="item" :value="item" :key="item"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="性别" prop="sex">
+                <el-select v-model="nameForm.sex">
+                  <el-option v-for="item in nameFormOption.sex" :label="item" :value="item" :key="item"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="人设" prop="context">
+                <el-input
+                  resize="none"
+                  v-model="nameForm.context"
+                  type="textarea"
+                  :rows="3"
+                  placeholder="请输入角色人设"
+                ></el-input>
+              </el-form-item>
+            </el-form>
+            <div class="named-content-btn">
+              <el-button @click="GetName" type="primary" size="mini" :loading="isNamedLoading">取名</el-button>
+              <el-button @click="ClearName" type="danger" size="mini">清除</el-button>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition name="el-fade-in">
+        <div v-show="isNamed&&isNamedResult" class="named result">
+          <div class="named-title">
+            取名结果
+            <i class="el-icon-close" @click="isNamedResult=false"></i>
+          </div>
+          <div class="named-content" v-loading="isNamedLoading">
+            <el-link v-for="item in nameList" :key="item" @click="Copy(item)">{{item}}</el-link>
+          </div>
+        </div>
+      </transition>
+      <!-- <div class="container">{{file}}</div> -->
+    </div>
+    <script src="../../../lib/vue-2.7.14/vue.js"></script>
+    <script src="../../../lib/element-ui/element-ui.js"></script>
+    <script src="../../../lib/lodash-4.0.0/lodash.min.js"></script>
+    <script src="../../../lib/dayjs-1.8.21/dayjs.js"></script>
+    <script src="../../../lib//axios-1.5.0/axios.js"></script>
+    <script src="./chapterEditor.js"></script>
+  </body>
+</html>

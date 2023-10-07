@@ -1,0 +1,202 @@
+#editor {
+  padding: 20px 20px 70px 20px;
+  position: relative;
+}
+[class^='icon-'] {
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.title {
+  font-size: 24px;
+  line-height: 24px;
+  height: 24px;
+  margin-bottom: 60px;
+}
+.title .title-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--vscode-foreground);
+  outline: none;
+  font-size: 20px;
+  height: 24px;
+  width: 100px;
+  color: var(--vscode-foreground);
+  text-align: center;
+}
+
+pre#edit {
+  min-height: 300px;
+  white-space: pre-wrap;
+  font-size: var(--pre-font-size);
+  outline: none;
+  margin: 0;
+}
+
+pre#edit.blod {
+  font-weight: 600;
+}
+pre#edit.italic {
+  font-style: italic;
+}
+pre#edit.underline {
+  text-decoration: underline;
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+}
+
+.toolbar .toolbar-border {
+  height: 30px;
+  border-radius: 4px;
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  display: flex;
+  box-shadow: 1px 1px 3px var(--vscode-widget-shadow);
+}
+
+.toolbar .toolbar-line {
+  width: 2px;
+  height: 20px;
+  background-color: var(--vscode-input-foreground);
+  margin: 5px 10px;
+}
+
+.toolbar .toolbar-border .toolbar-btn {
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.toolbar .toolbar-border .toolbar-select {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
+.toolbar-btn + .toolbar-btn {
+  margin-left: 5px;
+}
+.toolbar-select + .toolbar-btn {
+  margin-left: 5px;
+}
+.toolbar .toolbar-border .toolbar-btn:hover {
+  background-color: var(--vscode-inputOption-hoverBackground);
+}
+.toolbar .toolbar-border .toolbar-btn.toolbar-btn__active {
+  background-color: var(--vscode-inputOption-activeBorder);
+}
+
+.total {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  display: flex;
+  font-weight: 600;
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  box-shadow: 1px 1px 3px var(--vscode-widget-shadow);
+  border-radius: 4px;
+  align-items: center;
+  padding: 0px 10px;
+  white-space: nowrap;
+}
+.named {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 200px;
+  height: 420px;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  box-shadow: 1px 1px 3px var(--vscode-widget-shadow);
+  border-radius: 4px;
+  align-items: center;
+  padding: 10px;
+}
+.named i {
+  cursor: pointer;
+}
+.named i:hover {
+  background-color: var(--vscode-inputOption-hoverBackground);
+  color: var(--vscode-input-foreground);
+}
+.named .named-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+}
+
+.named .named-content {
+  width: 100%;
+}
+.named .named-content .named-content-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.named.result {
+  width: 600px;
+  right: 240px;
+  overflow: hidden;
+}
+
+.named.result .named-content {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.el-input__inner {
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+}
+.el-textarea__inner {
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+}
+.el-select-dropdown {
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+}
+.el-select-dropdown__item.hover {
+  background-color: var(--vscode-inputOption-hoverBackground);
+  color: var(--vscode-input-foreground);
+}
+.el-select-dropdown__item.selected {
+  background-color: var(--vscode-inputOption-activeBackground);
+  color: var(--vscode-inputOption-activeForeground);
+}
+.is-focus .el-input__inner {
+  border-color: var(--vscode-inputOption-activeBorder);
+}
+.el-link.is-underline:hover:after {
+  border-bottom-color: var(--vscode-inputOption-activeBorder);
+}
+.el-link.el-link--default:hover {
+  color: var(--vscode-inputOption-activeForeground);
+}

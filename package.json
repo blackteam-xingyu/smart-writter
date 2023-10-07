@@ -1,0 +1,179 @@
+{
+  "name": "smart-writter",
+  "displayName": "smart-writter",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "categories": [
+    "Other",
+    "Extension Packs"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "smart-writter.command.openBook",
+          "when": "view == smart-writter-book",
+          "group": "custom-item@1"
+        },
+        {
+          "command": "smart-writter.command.refresh",
+          "when": "view == smart-writter-book",
+          "group": "custom-item@2"
+        },
+        {
+          "command": "smart-writter.command.deleteChapter",
+          "when": "view == smart-writter-chapter",
+          "group": "custom-item@3"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "smart-writter.command.refresh",
+          "when": "view == smart-writter-book",
+          "group": "navigation@1"
+        },
+        {
+          "command": "smart-writter.command.import",
+          "when": "view == smart-writter-book",
+          "group": "navigation@2"
+        },
+        {
+          "command": "smart-writter.command.upload",
+          "when": "view == smart-writter-book",
+          "group": "navigation@3"
+        },
+        {
+          "command": "smart-writter.command.chapterRefresh",
+          "when": "view == smart-writter-chapter",
+          "group": "navigation@4"
+        },
+        {
+          "command": "smart-writter.command.createChapter",
+          "when": "view == smart-writter-chapter",
+          "group": "navigation@5"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "smart-writter.command.refresh",
+        "title": "刷新",
+        "category": "smart-writter"
+      },
+      {
+        "command": "smart-writter.command.import",
+        "title": "导入",
+        "category": "smart-writter"
+      },
+      {
+        "command": "smart-writter.command.upload",
+        "title": "上传",
+        "category": "smart-writter"
+      },
+      {
+        "command": "smart-writter.command.createChapter",
+        "title": "新建章节",
+        "category": "smart-writter"
+      },
+      {
+        "command": "smart-writter.command.openDetail",
+        "title": "详情"
+      },
+      {
+        "command": "smart-writter.command.openBook",
+        "title": "打开"
+      },
+      {
+        "command": "smart-writter.command.chapterRefresh",
+        "title": "刷新"
+      },
+      {
+        "command": "smart-writter.command.editChapter",
+        "title": "编辑"
+      },
+      {
+        "command": "smart-writter.command.deleteChapter",
+        "title": "删除"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bookTree",
+          "title": "写作",
+          "icon": "static/images/book.svg"
+        }
+      ]
+    },
+    "views": {
+      "bookTree": [
+        {
+          "id": "smart-writter-book",
+          "name": "书籍"
+        },
+        {
+          "id": "smart-writter-chapter",
+          "name": "章节"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "smart-writter",
+      "properties": {
+        "smart-writter.chatglm.url": {
+          "type": "string",
+          "default": "https://open.bigmodel.cn/api/paas/v3/model-api",
+          "description": "chatglm Api地址"
+        },
+        "smart-writter.chatglm.version": {
+          "type": "string",
+          "default": "chatglm_pro",
+          "enum": [
+            "chatglm_pro",
+            "chatglm_std",
+            "chatglm_lite"
+          ],
+          "description": "chatglm 版本"
+        },
+        "smart-writter.chatglm.key": {
+          "type": "string",
+          "description": "chatglm ApiKey"
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.81.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}

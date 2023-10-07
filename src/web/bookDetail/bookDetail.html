@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>书籍详情</title>
+    <link rel="stylesheet" href="../../../lib/element-ui/index.css" />
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="./bookDetail.css" />
+  </head>
+  <body>
+    <div id="book" :style="varCss">
+      <div class="card">
+        <div class="img">
+          <div class="upload" @click="Upload"><i class="el-icon-upload"></i></div>
+          <el-image :src="detail.imgPath" />
+        </div>
+        <div class="detail">
+          <div>
+            <div class="title">
+              <span v-if="!edit">{{detail.name}}</span>
+              <el-input v-else v-model="detailEdit.name" size="small"></el-input>
+            </div>
+            <div class="author">
+              <span v-if="!edit" style="margin-right: 8px">{{detail.author}}</span>
+              <el-input v-else v-model="detailEdit.author" size="mini" style="margin-right: 8px"></el-input>
+              著
+            </div>
+            <div class="tags">
+              <div v-if="!edit" class="tags-items"><div v-for="item in detail.assorts" class="tag">{{item}}</div></div>
+
+              <el-cascader
+                v-else
+                :options="bookType"
+                v-model="detailEdit.assorts"
+                :props="{value:'label'}"
+                collapse-tags
+                size="mini"
+                clearable
+                @change="change"
+              ></el-cascader>
+            </div>
+            <div class="tags">
+              <div v-for="item in detail.tags" class="tag">{{item}}</div>
+            </div>
+            <div class="code">
+              计划
+              <span v-if="!edit" class="code-num">{{detail.codeNum}}</span>
+              <el-input v-else v-model="detailEdit.codeNum" size="mini"></el-input>
+              万字
+            </div>
+          </div>
+          <div>
+            <el-button type="danger" :disabled="edit">开始写作</el-button>
+          </div>
+        </div>
+        <div class="tools">
+          <el-button type="primary" v-show="!edit" @click="Edit">编辑</el-button>
+          <el-button type="primary" v-show="edit" @click="Save">保存</el-button>
+        </div>
+      </div>
+      <div class="card introduce">
+        <div class="title">作品简介</div>
+        <div class="context">
+          <span v-if="!edit">{{detail.introduction}}</span>
+          <el-input
+            v-else
+            type="textarea"
+            :autosize="{ minRows: 4, maxRows: 8}"
+            placeholder="请输入简介"
+            v-model="detailEdit.introduction"
+          ></el-input>
+        </div>
+      </div>
+    </div>
+    <script src="../../../lib/vue-2.7.14/vue.js"></script>
+    <script src="../../../lib/element-ui/element-ui.js"></script>
+    <script src="../../../lib/lodash-4.0.0/lodash.min.js"></script>
+    <script src="./bookDetail.js"></script>
+
+    <style>
+      #book {
+        padding: 20px;
+      }
+    </style>
+  </body>
+</html>
