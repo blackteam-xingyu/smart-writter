@@ -92,7 +92,7 @@ export const openDetail = (context: ExtensionContext) => {
       },
     };
     const webview = webviewTool.webview;
-    webview.html = getWebViewContent(context, 'src/web/bookDetail/bookDetail.html', panel);
+    webview.html = getWebViewContent(context, 'web/bookDetail/bookDetail.html', panel);
     webview.onDidReceiveMessage(
       (message: WebviewMessage) => {
         if (message.method in webviewTool.listener) {
@@ -155,7 +155,7 @@ export const editChapter = (context: ExtensionContext) => {
       },
     };
     const webview = webviewTool.webview;
-    webview.html = getWebViewContent(context, 'src/web/chapterEditor/chapterEditor.html', panel);
+    webview.html = getWebViewContent(context, 'web/chapterEditor/chapterEditor.html', panel);
     webview.onDidReceiveMessage(
       (message: WebviewMessage) => {
         if (message.method in webviewTool.listener) {
